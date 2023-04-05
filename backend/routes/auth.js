@@ -8,6 +8,8 @@ const saltRounds = 10;
 
 const JWT_SECRET = "NoteUp APP";
 
+const fetchUser = require('../middleware/fetchUser')
+
 const { body, validationResult } = require("express-validator");
 
 //SIGNUP NEW USER . NO AUTHENTICATION REQUIRED
@@ -92,5 +94,19 @@ router.post(
     }
   }
 );
+
+//USER AUTHENTICATION USING TOKEN TO PROVIDE DATA
+
+router.post('/getuser',fetchUser,async (req,res)=>{
+  try {
+    const userid = req.user.id;
+    const data = await User.findById(userid).select('-password');
+    res.status(200).json({data});
+    
+  } catch (error) {
+    console.error(error.message);
+      res.status(500).json({error}).send("INTERNAL SERVER ERROR OCCURED");
+  }
+})
 
 module.exports = router;
