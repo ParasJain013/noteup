@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
-//HASHING PASSWORD LIBRARY
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const saltRounds = 10;
@@ -99,8 +98,10 @@ router.post(
 
 router.post('/getuser',fetchUser,async (req,res)=>{
   try {
+
     const userid = req.user.id;
     const data = await User.findById(userid).select('-password');
+    console.log(req.user.id)
     res.status(200).json({data});
     
   } catch (error) {
