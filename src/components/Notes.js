@@ -13,6 +13,7 @@ export default function Notes() {
         return <NoteItem note={notes}/>;
       })}
     </div>
+    
 
   );
 }
