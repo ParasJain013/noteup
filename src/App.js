@@ -5,12 +5,14 @@ import Navbar from "./components/navbar";
 import Home from "./components/Home";
 import About from "./components/About";
 import NoteState from "./context/NoteState";
+import Alert from "./components/Alert";
 function App() {
   return (
     <>
       <NoteState>
         <Router>
           <Navbar />
+        <Alert message="SEE THE ALERT"/>
           <div className="container my-3  ">
           <Routes>
             <Route exact path="/" element={<Home />}></Route>
