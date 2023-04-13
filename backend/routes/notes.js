@@ -83,7 +83,7 @@ router.put("/updatenote/:id", fetchUser, async (req, res) => {
 
 //ROUTE: DELETE THE NOTE using api/notes/deletenote/:id
 
-router.put("/deletenote/:id", fetchUser, async (req, res) => {
+router.delete("/deletenote/:id", fetchUser, async (req, res) => {
   //FIND NOTE AND DELETE
   let note = await Notes.findById(req.params.id);
   if (!note) {
