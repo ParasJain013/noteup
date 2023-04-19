@@ -23,8 +23,8 @@ router.post(
   "/addnotes",
   fetchUser,
   [
-    body("title").isLength({ min: 3 }),
-    body("description").isLength({ min: 10 }),
+    body("title").isLength({ min: 5 }),
+    body("description").isLength({ min: 5 }),
   ],
   async (req, res) => {
     //RETURN ERROR IF VALIDATION IS NOT MET

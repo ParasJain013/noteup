@@ -38,15 +38,7 @@ const NoteState = (props) => {
 
     const json = await response.json();
     console.log(json)
-    const note = {
-      _id: "642f517f9e14b7c01bc809370",
-      user: "642c81355fc613920149a0d2",
-      title: title,
-      description: description,
-      tag: tag,
-      date: "2023-04-06T19:05:29.417Z",
-      __v: 0,
-    };
+    const note = json;
     // setNotes(notes.push(note)) this will throw error
     setNotes(notes.concat(note));
   };
