@@ -28,11 +28,13 @@ router.post(
     }
     try {
       //Check If User With Same Email Exist or NOT
+      let success = false;
       let user = await User.findOne({ email: req.body.email });
       if (user) {
+
         return res
           .status(400)
-          .json({ error: "User With this Email already exist" });
+          .json({success, error: "User With this Email already exist" });
       }
       //Creating Data in Database
       const salt = await bcrypt.genSalt(10);
@@ -48,8 +50,8 @@ router.post(
         },
       };
       const authToken = jwt.sign(data, JWT_SECRET);
-
-      res.json({ authToken });
+      success=true
+      res.json({success, authToken });
     } catch (error) {
       console.error(error.message);
       res.status(500).send("Some Error Occured");
